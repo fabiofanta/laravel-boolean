@@ -52,7 +52,7 @@
 						<h2>Pages</h2>
 					</div>
 					<div class="offset-3 col-3">
-						<a href="#">Crea una pagina</a>
+						<a href="{{route('admin.pages.create')}}">Crea una pagina</a>
 					</div>
 				</div>
 				<table class="table">
