@@ -90,6 +90,7 @@ $categories =  [
 	];
 
 	$message = '';
+	$oldtags = null;
 @endphp
 @extends('layouts.app')
 @section('content')
@@ -162,7 +163,12 @@ $categories =  [
 								 	<legend>Tags</legend>
 									@foreach ($tags as $key => $tag)
 										<div class="form-check-inline">
-											<input class="form-check-input" type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
+											@if(is_array($oldtags))
+					                          <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}"
+					                          {{(in_array($tag['id'],  $oldtags)) ? 'checked' : ''}}>
+	                     					@else
+						                        <input class="form-check-input"  type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}" {{ (in_array($tag['id'],  $page['tags'])) ? 'checked' : '' }}>
+						                    @endif
 										   <label class="form-check-label" for="{{$tag['id']}}">{{$tag['name']}}</label>
 										</div>
 									@endforeach
@@ -176,7 +182,7 @@ $categories =  [
 									<legend>Photos</legend>
 									@foreach ($photos as $key => $photo)
 										<div class="form-check-inline">
-											<input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}">
+											<input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}" {{(in_array($photo['id'],$page['photos']) == true) ? 'checked' : ''}}>
 										   <label class="form-check-label" for="{{$photo['id']}}">{{$photo['title']}}</label>
 										  <img src="{{$photo['path']}}" alt="">
 										</div>
