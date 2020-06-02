@@ -1,4 +1,37 @@
-
+@php
+	$pages = [
+		[
+			'id'=>1,
+			'title'=> 'lorem ipsum dolor sit',
+			'category'=>1,
+			'tags'=> [
+				1,
+				2,
+				5
+			],
+		],
+		[
+			'id'=>2,
+			'title'=> 'ipsum dolor sit',
+			'category'=>2,
+			'tags'=> [
+				4,
+				6,
+				8
+			],
+		],
+		[
+			'id'=>3,
+			'title'=> 'dolor sit',
+			'category'=>3,
+			'tags'=> [
+				9,
+				2,
+				7
+			],
+		],
+	];
+@endphp
 @extends('layouts.app')
 @section('content')
 	<div class="container">
@@ -33,17 +66,26 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
-							<td>Miscellanea</td>
-							<td>Tag1, Tag2,Tag3</td>
-							<td><a class="btn btn-primary" href="#">Visualizza</a></td>
-							<td><a class="btn btn-info" href="#">Modifica</a></td>
-							<td><form class="" action="" method="post">
-								<input class="btn btn-danger" type="submit" name="" value="Elimina">
-							</form></td>
-						</tr>
+						@foreach ($pages as $key => $page)
+							<tr>
+								<td>{{$page['id']}}</td>
+								<td>{{$page['title']}}</td>
+								<td>{{$page['category']}}</td>
+								<td>
+									@foreach ($page['tags'] as $key => $tag)
+										{{$tag}}
+										@if (!$loop->last)
+											,
+										@endif
+									@endforeach
+								</td>
+								<td><a class="btn btn-primary" href="#">Visualizza</a></td>
+								<td><a class="btn btn-info" href="#">Modifica</a></td>
+								<td><form class="" action="" method="post">
+									<input class="btn btn-danger" type="submit" name="" value="Elimina">
+								</form></td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>
