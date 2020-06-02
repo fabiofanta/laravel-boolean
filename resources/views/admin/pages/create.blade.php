@@ -29,6 +29,25 @@
 			'name' => 'Tag7'
 		]
 	];
+
+	$photos = [
+		[
+			'id' => 1,
+			'title' => 'Lorem ipsum',
+			'path' => 'images/nomefoto.jpg'
+		],
+		[
+			'id' => 2,
+			'title' => 'Due Lorem fpsum',
+			'path' => 'images/nomefoto.jpg'
+		],
+		[
+			'id' => 3,
+			'title' => 'Tre Lorem ipsum',
+			'path' => 'images/nomefoto.jpg'
+		]
+
+	];
 @endphp
 @extends('layouts.app')
 @section('content')
@@ -91,16 +110,38 @@
  							   	<small class="form-text">Error</small>
  						   	   @enderror
  							 </div>
-							 @foreach ($tags as $key => $tag)
-								 <div class="form-check-inline">
-								   <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
-	 							   <label class="form-check-label" for="{{$tag['id']}}">{{$tag['name']}}</label>
-	 							 </div>
-							 @endforeach
-
-							 @error('body')
-							  <small class="form-text">Error</small>
-							 @enderror
+							 <div class="form-group">
+								 <fieldset>
+								 	<legend>Tags</legend>
+									@foreach ($tags as $key => $tag)
+										<div class="form-check-inline">
+											<input class="form-check-input" type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
+										   <label class="form-check-label" for="{{$tag['id']}}">{{$tag['name']}}</label>
+										</div>
+									@endforeach
+									@error('tags')
+								   	<small class="form-text">Error</small>
+								 	@enderror
+								 </fieldset>
+							</div>
+							<div class="form-group">
+								<fieldset>
+									<legend>Photos</legend>
+									@foreach ($photos as $key => $photo)
+										<div class="form-check-inline">
+											<input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}">
+										   <label class="form-check-label" for="{{$photo['id']}}">{{$photo['title']}}</label>
+										  <img src="{{$photo['path']}}" alt="">
+										</div>
+									@endforeach
+									@error('photos')
+								   	<small class="form-text">Error</small>
+								 	@enderror
+								</fieldset>
+							</div>
+							<div class="form-group">
+								<input class="btn btn-primary" type="submit" name="" value="Salva">
+							</div>
 						</form>
 
 					</div>
