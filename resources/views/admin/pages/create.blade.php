@@ -92,7 +92,7 @@
  						   	   @enderror
  							 </div>
 							 @foreach ($tags as $key => $tag)
-								 <div class="form-check">
+								 <div class="form-check-inline">
 								   <input class="form-check-input" type="checkbox" name="tags[]" id="tag{{$tag['id']}}" value="{{$tag['id']}}">
 	 							   <label class="form-check-label" for="{{$tag['id']}}">{{$tag['name']}}</label>
 	 							 </div>
