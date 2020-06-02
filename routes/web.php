@@ -28,3 +28,7 @@ Route::get('/pages',  function () {
 Route::get('/pages/create',  function () {
     return view('admin.pages.create');
 })->name('admin.pages.create');
+
+Route::get('/pages/{id}/edit',  function () {
+    return view('admin.pages.edit');
+})->name('admin.pages.edit');

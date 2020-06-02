@@ -1,5 +1,5 @@
 @php
-	$categories =  [
+$categories =  [
 		  [
 			'id' => 1,
 			'name' =>'Miscellanea'
@@ -71,6 +71,25 @@
 		]
 
 	];
+
+	$page = [
+		'id' => 1,
+		'title' => 'lorem ipsum dolor sit',
+		'summary' => 'lorem ipsum dolor sit',
+		'body' => 'Questo è un testo',
+		'category_id' => 1,
+		'tags' => [
+			1,
+			3,
+			5
+		],
+		'photos' => [
+			3,
+			6
+		]
+	];
+
+	$message = '';
 @endphp
 @extends('layouts.app')
 @section('content')
@@ -91,24 +110,24 @@
 			<div class="col-12">
 				<div class="row">
 					<div class="col-12">
-						<h2>Inserisci una nuova pagina</h2>
+						<h2>Modifica una pagina</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-12">
 						<form class="" action="" method="post">
 							@csrf
-							@method('POST')
+							@method('PUT')
 							<div class="form-group">
 							   <label for="title">Title</label>
-							   <input type="text" class="form-control" id="title"  placeholder="Type a title">
+							   <input type="text" class="form-control" id="title"  placeholder="Type a title" value="{{$page['title']}}">
 							   @error('title')
 							   <small class="form-text">Error</small>
 						   	   @enderror
 							 </div>
 							<div class="form-group">
 							   <label for="summary">Summary</label>
-							   <input type="text" class="form-control" id="summary"  placeholder="Type a summary">
+							   <input type="text" class="form-control" id="summary"  placeholder="Type a summary" value="{{$page['summary']}}">
 							   @error('summary')
 							   <small class="form-text">Error</small>
 						   	   @enderror
@@ -117,7 +136,14 @@
 							   <label for="category">Category</label>
 								<select class="custom-select" name="category" id="category">
 									@foreach ($categories as $key => $category)
+										@if ($category['id'] == $page['category_id'])
+										@php
+											$message = 'selected';
+										@endphp
+										<option value="{{$category['id']}}" {{$message}}>{{$category['name']}}</option>
+										@else
 										<option value="{{$category['id']}}">{{$category['name']}}</option>
+										@endif
 									@endforeach
 								</select>
 							   @error('category')
@@ -126,7 +152,7 @@
 							 </div>
 							 <div class="form-group">
  							   <label for="body">Body</label>
- 								<textarea class="form-control" name="body" rows="10" id="body"></textarea>
+ 								<textarea class="form-control" name="body" rows="10" id="body">{{$page['body']}}</textarea>
  							   @error('body')
  							   	<small class="form-text">Error</small>
  						   	   @enderror
