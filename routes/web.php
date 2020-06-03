@@ -37,6 +37,6 @@ Route::get('/photos',  function () {
     return view('admin.photos.index');
 })->name('admin.photos.index');
 
-Route::get('/photos/create',  function () {
-    return view('admin.photos.create');
-})->name('admin.photos.create');
+Route::get('/photos/create', 'Admin\PhotoController@create')->name('admin.photos.create');
+
+Route::post('/photos/store', 'Admin\PhotoController@store')->name('admin.photos.store');

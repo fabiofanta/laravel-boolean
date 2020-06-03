@@ -101,14 +101,14 @@
 							@method('POST')
 							<div class="form-group">
 							   <label for="title">Title</label>
-							   <input type="text" class="form-control" id="title"  placeholder="Type a title">
+							   <input type="text" class="form-control" id="title"  placeholder="Type a title" name="title">
 							   @error('title')
 							   <small class="form-text">Error</small>
 						   	   @enderror
 							 </div>
 							<div class="form-group">
 							   <label for="summary">Summary</label>
-							   <input type="text" class="form-control" id="summary"  placeholder="Type a summary">
+							   <input type="text" class="form-control" id="summary"  placeholder="Type a summary" name="summary">
 							   @error('summary')
 							   <small class="form-text">Error</small>
 						   	   @enderror
@@ -150,7 +150,7 @@
 									<legend>Photos</legend>
 									@foreach ($photos as $key => $photo)
 										<div class="form-check-inline">
-											<input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}">
+											<input class="form-check-input" type="checkbox" name="photos[]" id="photo{{$photo['id']}}" value="{{$photo['id']}}" name="photos[]">
 										   <label class="form-check-label" for="{{$photo['id']}}">{{$photo['title']}}</label>
 										  <img src="{{$photo['path']}}" alt="">
 										</div>

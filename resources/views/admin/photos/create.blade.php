@@ -96,7 +96,7 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<form class="" action="" method="post" enctype="multipart/form-data">
+						<form class="" action="{{route('admin.photos.store')}}" method="post" enctype="multipart/form-data">
 							@csrf
 							@method('POST')
 							<div class="form-group">
