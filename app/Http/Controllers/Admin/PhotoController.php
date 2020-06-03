@@ -77,15 +77,17 @@ class PhotoController extends Controller
             'id' => 1,
             'title' => 'Lorem ipsum',
             'description' => 'Questo testo',
-            'path' => 'images/DM9ZKf8mlnI2Wt1BECBUo3mefo5QfhFlrQDlKzde.png'
+            'path' => 'images/9B9rey5OQJD81yZPDyO439zcfn0zkK5yDa0Htb5r.png'
         ];
         $data = $request -> all();
-        dd($data);
         if (isset($data['path'])) {
              Storage::disk('public')->delete($photo['path']);
-        }
+             Storage::disk('public')->put('images', $photo['path']);
+        } else {
+            Storage::disk('public')->put('images', $photo['path']);
+        };
 
-        // poi si dovrebbe fare l'update e il successivo redirect su una view.
+        // poi si dovrebbe pushare il nuovo path e fare l'update e il successivo redirect su una view.
 
     }
 

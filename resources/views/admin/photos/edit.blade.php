@@ -4,7 +4,7 @@
 			'id' => 1,
 			'title' => 'Lorem ipsum',
 			'description' => 'Questo testo',
-			'path' => 'images/DM9ZKf8mlnI2Wt1BECBUo3mefo5QfhFlrQDlKzde.png'
+			'path' => 'images/9B9rey5OQJD81yZPDyO439zcfn0zkK5yDa0Htb5r.png'
 	];
 @endphp
 @extends('layouts.app')
