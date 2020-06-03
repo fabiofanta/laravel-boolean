@@ -39,4 +39,10 @@ Route::get('/photos',  function () {
 
 Route::get('/photos/create', 'Admin\PhotoController@create')->name('admin.photos.create');
 
-Route::post('/photos/store', 'Admin\PhotoController@store')->name('admin.photos.store');
+Route::post('/photos', 'Admin\PhotoController@store')->name('admin.photos.store');
+
+Route::get('/photos/{photo}/edit', function () {
+    return view('admin.photos.edit');
+})->name('admin.photos.edit');
+
+Route::patch('/photos/{idphoto}/edit', 'Admin\PhotoController@update')->name('admin.photos.update');
