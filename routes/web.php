@@ -32,3 +32,7 @@ Route::get('/pages/create',  function () {
 Route::get('/pages/{id}/edit',  function () {
     return view('admin.pages.edit');
 })->name('admin.pages.edit');
+
+Route::get('/photos',  function () {
+    return view('admin.photos.index');
+})->name('admin.photos.index');
